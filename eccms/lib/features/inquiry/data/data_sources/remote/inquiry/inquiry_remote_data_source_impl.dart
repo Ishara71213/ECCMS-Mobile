@@ -64,8 +64,8 @@ class InquiryRemoteDataSourceImpl extends InquiryRemoteDataSource {
 
       InquiryModel model = InquiryModel.fromEntity(entity);
 
-      final response =
-          await HttpHelper.post(url, prefs, jsonEncode(model.toJson()));
+      final response = await HttpHelper.post(
+          url, prefs, jsonEncode(model.toJsonPostInquiry()));
 
       if (response.statusCode != 200) {
         throw Exception("Failed to post inquiry");

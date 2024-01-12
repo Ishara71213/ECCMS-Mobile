@@ -209,7 +209,7 @@ class _InquiryPostScreenState extends State<InquiryPostScreen> {
                         children: [
                           Expanded(
                             child: ElevatedButton(
-                              onPressed: inquiryCubit.onSubmit,
+                              onPressed: () => inquiryCubit.onSubmit(context),
                               style: ElevatedButton.styleFrom(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 28.0),

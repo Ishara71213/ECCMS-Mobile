@@ -114,4 +114,16 @@ class InquiryModel extends InquiryEntity {
       rating: entity.rating,
     );
   }
+
+  Map<String, dynamic> toJsonPostInquiry() {
+    return {
+      "userId": userId,
+      "institutionId": institutionId,
+      "branchId": branchId,
+      "crimeTypeId": crimeTypeId,
+      "status": status,
+      "inquiryEntry": inquiryEntry,
+      "userAttachment": userAttachment,
+    };
+  }
 }

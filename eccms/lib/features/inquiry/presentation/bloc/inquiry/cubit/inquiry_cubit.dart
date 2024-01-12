@@ -4,6 +4,7 @@ import 'package:eccms/features/auth/domain/usecases/get_current_uid_usecase.dart
 import 'package:eccms/features/inquiry/domain/usecases/inquiry/get_all_by_employee_id.dart';
 import 'package:eccms/features/inquiry/domain/usecases/inquiry/get_all_by_user_id.dart';
 import 'package:eccms/features/inquiry/domain/usecases/inquiry/post_inquiry.dart';
+import 'package:eccms/features/organization/domain/entities/city_entity.dart';
 import 'package:eccms/features/organization/domain/usecases/branch/get_all_branches.dart';
 import 'package:eccms/features/organization/domain/usecases/branch/post_branch.dart';
 import 'package:eccms/features/organization/domain/usecases/cities/get_all_cities.dart';
@@ -140,5 +141,13 @@ class InquiryCubit extends Cubit<InquiryState> {
     }
   }
 
-  void onSubmit() {}
+  void onSubmit(BuildContext context) {
+    try {
+      var cities = getAllCitiesUsecase.call();
+    } catch (e) {
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text('Image Selecting error')));
+    }
+  }
 }
