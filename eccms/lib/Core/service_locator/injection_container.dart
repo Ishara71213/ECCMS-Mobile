@@ -28,6 +28,18 @@ import 'package:eccms/features/organization/domain/repository/cities_repository.
 import 'package:eccms/features/organization/domain/repository/crime_type_repository.dart';
 import 'package:eccms/features/organization/domain/repository/institution_repository.dart';
 import 'package:eccms/features/organization/domain/repository/province_repository.dart';
+import 'package:eccms/features/organization/domain/usecases/branch/get_all_branches.dart';
+import 'package:eccms/features/organization/domain/usecases/branch/get_all_branches_by_institution_id.dart';
+import 'package:eccms/features/organization/domain/usecases/branch/post_branch.dart';
+import 'package:eccms/features/organization/domain/usecases/cities/get_all_cities.dart';
+import 'package:eccms/features/organization/domain/usecases/cities/post_city.dart';
+import 'package:eccms/features/organization/domain/usecases/crime_type/get_all_crime_type.dart';
+import 'package:eccms/features/organization/domain/usecases/crime_type/get_all_crime_type_by_institution_id.dart';
+import 'package:eccms/features/organization/domain/usecases/crime_type/post_crime_type.dart';
+import 'package:eccms/features/organization/domain/usecases/institutions/get_all_institutions.dart';
+import 'package:eccms/features/organization/domain/usecases/institutions/get_institution_by_id.dart';
+import 'package:eccms/features/organization/domain/usecases/province/get_all_provinces.dart';
+import 'package:eccms/features/organization/domain/usecases/province/post_province.dart';
 import 'package:get_it/get_it.dart';
 
 GetIt sl = GetIt.instance;
@@ -66,6 +78,42 @@ Future<void> init() async {
   //App features usecases
   sl.registerLazySingleton<GetEmailByUidUsecase>(
       () => GetEmailByUidUsecase(repository: sl.call()));
+
+  //Organization usecases
+
+// For Branches Module
+  sl.registerLazySingleton<GetAllBranchesUsecase>(
+      () => GetAllBranchesUsecase(repository: sl.call()));
+  sl.registerLazySingleton<GetAllBranchesByInstitutionIdUsecase>(
+      () => GetAllBranchesByInstitutionIdUsecase(repository: sl.call()));
+  sl.registerLazySingleton<PostBranchUsecase>(
+      () => PostBranchUsecase(repository: sl.call()));
+
+// For Cities Module
+  sl.registerLazySingleton<GetAllCitiesUsecase>(
+      () => GetAllCitiesUsecase(repository: sl.call()));
+  sl.registerLazySingleton<PostCityUsecase>(
+      () => PostCityUsecase(repository: sl.call()));
+
+// For Crime Types Module
+  sl.registerLazySingleton<GetAllCrimeTypeUsecase>(
+      () => GetAllCrimeTypeUsecase(repository: sl.call()));
+  sl.registerLazySingleton<GetAllCrimeTypeByInstitutionIdUsecase>(
+      () => GetAllCrimeTypeByInstitutionIdUsecase(repository: sl.call()));
+  sl.registerLazySingleton<PostCrimeTypeUsecase>(
+      () => PostCrimeTypeUsecase(repository: sl.call()));
+
+// For Institutions Module
+  sl.registerLazySingleton<GetAllInstitutionsUsecase>(
+      () => GetAllInstitutionsUsecase(repository: sl.call()));
+  sl.registerLazySingleton<GetInstitutionByIdUsecase>(
+      () => GetInstitutionByIdUsecase(repository: sl.call()));
+
+// For Provinces Module
+  sl.registerLazySingleton<GetAllProvincesUsecase>(
+      () => GetAllProvincesUsecase(repository: sl.call()));
+  sl.registerLazySingleton<PostProvinceUsecase>(
+      () => PostProvinceUsecase(repository: sl.call()));
 
   //repositories
   sl.registerLazySingleton<AuthRepository>(

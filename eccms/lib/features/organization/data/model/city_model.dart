@@ -22,4 +22,12 @@ class CityModel extends CityEntity {
       'provinceId': provinceId,
     };
   }
+
+  factory CityModel.fromEntity(CityEntity entity) {
+    return CityModel(
+      id: entity.id,
+      name: entity.name,
+      provinceId: entity.provinceId,
+    );
+  }
 }

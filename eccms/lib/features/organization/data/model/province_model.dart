@@ -19,4 +19,11 @@ class ProvinceModel extends ProvinceEntity {
       'name': name,
     };
   }
+
+  factory ProvinceModel.fromEntity(ProvinceEntity entity) {
+    return ProvinceModel(
+      id: entity.id,
+      name: entity.name,
+    );
+  }
 }

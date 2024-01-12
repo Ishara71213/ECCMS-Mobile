@@ -42,4 +42,16 @@ class BranchModel extends BranchEntity {
       'institutionId': institutionId,
     };
   }
+
+  factory BranchModel.fromEntity(BranchEntity entity) {
+    return BranchModel(
+      id: entity.id,
+      name: entity.name,
+      address: entity.address,
+      phoneNumber: entity.phoneNumber,
+      emailAddress: entity.emailAddress,
+      cityId: entity.cityId,
+      institutionId: entity.institutionId,
+    );
+  }
 }

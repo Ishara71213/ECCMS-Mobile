@@ -38,4 +38,15 @@ class CrimeTypeModel extends CrimeTypeEntity {
       'institutionId': institutionId,
     };
   }
+
+  factory CrimeTypeModel.fromEntity(CrimeTypeEntity entity) {
+    return CrimeTypeModel(
+      id: entity.id,
+      name: entity.name,
+      description: entity.description,
+      crimeLevel: entity.crimeLevel,
+      averageResponseHours: entity.averageResponseHours,
+      institutionId: entity.institutionId,
+    );
+  }
 }
