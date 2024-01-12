@@ -8,10 +8,6 @@ class AuthRepositoryImpl extends AuthRepository {
   AuthRepositoryImpl({required this.remoteDataSource});
 
   @override
-  Future<void> getCreateCurrentUser(UserEntity user) async =>
-      remoteDataSource.getCreateCurrentUser(user);
-
-  @override
   Future<UserEntity> getCurrentUserById() async =>
       remoteDataSource.getCurrentUserById();
 

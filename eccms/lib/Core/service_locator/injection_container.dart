@@ -1,10 +1,8 @@
-import 'package:eccms/Core/common/presentation/bloc/inquiry/cubit/inquiry_cubit.dart';
 import 'package:eccms/features/app_features/domain/usecases/get_email_by_uid.dart';
 import 'package:eccms/features/auth/data/data_sources/remote/auth_eccms_remote_data_source.dart';
 import 'package:eccms/features/auth/data/data_sources/remote/auth_ecms_remote_data_source_impl.dart';
 import 'package:eccms/features/auth/data/repository_impl/auth_repository_impl.dart';
 import 'package:eccms/features/auth/domain/repository/Auth_repository.dart';
-import 'package:eccms/features/auth/domain/usecases/get_create_current_user_usecase.dart';
 import 'package:eccms/features/auth/domain/usecases/get_current_uid_usecase.dart';
 import 'package:eccms/features/auth/domain/usecases/get_current_user_by_uid_usecase.dart';
 import 'package:eccms/features/auth/domain/usecases/is_sign_in_usecase.dart';
@@ -13,6 +11,11 @@ import 'package:eccms/features/auth/domain/usecases/sign_out_usecase.dart';
 import 'package:eccms/features/auth/domain/usecases/sign_up_usecase.dart';
 import 'package:eccms/features/auth/presentation/bloc/auth/auth_cubit.dart';
 import 'package:eccms/features/auth/presentation/bloc/user/cubit/user_cubit.dart';
+import 'package:eccms/features/inquiry/data/data_sources/remote/inquiry/inquiry_remote_data_source.dart';
+import 'package:eccms/features/inquiry/data/data_sources/remote/inquiry/inquiry_remote_data_source_impl.dart';
+import 'package:eccms/features/inquiry/presentation/bloc/inquiry/cubit/inquiry_cubit.dart';
+import 'package:eccms/features/organization/data/data_sources/remote/organization_data/organization_data_remote_data_source.dart';
+import 'package:eccms/features/organization/data/data_sources/remote/organization_data/organization_data_remote_data_source_impl.dart';
 import 'package:get_it/get_it.dart';
 
 GetIt sl = GetIt.instance;
@@ -27,7 +30,6 @@ Future<void> init() async {
   sl.registerFactory<UserCubit>(() => UserCubit(
       signInUsecase: sl.call(),
       signUpUsecase: sl.call(),
-      getCreateCurrentUserUsecase: sl.call(),
       getCurrentUIdUsecase: sl.call(),
       getCurrentUserByUidUsecase: sl.call()));
 
@@ -46,8 +48,6 @@ Future<void> init() async {
       () => IsSignInUsecase(repository: sl.call()));
   sl.registerLazySingleton<GetCurrentUIdUsecase>(
       () => GetCurrentUIdUsecase(repository: sl.call()));
-  sl.registerLazySingleton<GetCreateCurrentUserUsecase>(
-      () => GetCreateCurrentUserUsecase(repository: sl.call()));
   sl.registerLazySingleton<GetCurrentUserByUidUsecase>(
       () => GetCurrentUserByUidUsecase(repository: sl.call()));
 
@@ -62,6 +62,10 @@ Future<void> init() async {
   //data source
   sl.registerLazySingleton<AuthEccmsRemoteDataSource>(
       () => AuthEccmsRemoteDataSourceImpl());
+  sl.registerLazySingleton<OrganizationDataRemoteDataSource>(
+      () => OrganizationDataRemoteDataSourceImpl());
+  sl.registerLazySingleton<InquiryRemoteDataSource>(
+      () => InquiryRemoteDataSourceImpl());
 
   //external
   // final auth = FirebaseAuth.instance;

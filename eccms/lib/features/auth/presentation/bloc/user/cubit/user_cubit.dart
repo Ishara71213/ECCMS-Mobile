@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:eccms/Core/common/domain/entities/user_entity.dart';
 import 'package:eccms/Core/constants/user_types.dart';
 import 'package:eccms/Core/enum/usertypes.dart';
-import 'package:eccms/features/auth/domain/usecases/get_create_current_user_usecase.dart';
 import 'package:eccms/features/auth/domain/usecases/get_current_uid_usecase.dart';
 import 'package:eccms/features/auth/domain/usecases/get_current_user_by_uid_usecase.dart';
 import 'package:eccms/features/auth/domain/usecases/sign_in_usecase.dart';
@@ -17,7 +16,6 @@ part 'user_state.dart';
 class UserCubit extends Cubit<UserState> {
   final SignInUsecase signInUsecase;
   final SignUpUsecase signUpUsecase;
-  final GetCreateCurrentUserUsecase getCreateCurrentUserUsecase;
   final GetCurrentUIdUsecase getCurrentUIdUsecase;
   final GetCurrentUserByUidUsecase getCurrentUserByUidUsecase;
   String errorMsg = "";
@@ -27,7 +25,6 @@ class UserCubit extends Cubit<UserState> {
   UserCubit(
       {required this.signInUsecase,
       required this.signUpUsecase,
-      required this.getCreateCurrentUserUsecase,
       required this.getCurrentUIdUsecase,
       required this.getCurrentUserByUidUsecase})
       : super(UserInitial());

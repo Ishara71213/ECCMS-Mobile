@@ -10,11 +10,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthEccmsRemoteDataSourceImpl extends AuthEccmsRemoteDataSource {
   AuthEccmsRemoteDataSourceImpl();
-  @override
-  Future<void> getCreateCurrentUser(UserEntity entity) async {
-    // TODO: implement getCreateCurrentUser
-    throw UnimplementedError();
-  }
 
   @override
   Future<String> getCurrentUId() async {

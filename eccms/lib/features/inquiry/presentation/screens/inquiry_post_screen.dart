@@ -1,13 +1,12 @@
 import 'dart:io';
 
 import 'package:eccms/Core/Utils/navigator_handler.dart';
-import 'package:eccms/Core/common/presentation/bloc/inquiry/cubit/inquiry_cubit.dart';
 import 'package:eccms/Core/widgets/input_widgets/input_widgets_library.dart';
 import 'package:eccms/config/routes/route_const.dart';
 import 'package:eccms/config/theme/app_themes.dart';
+import 'package:eccms/features/inquiry/presentation/bloc/inquiry/cubit/inquiry_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class InquiryPostScreen extends StatefulWidget {
@@ -30,22 +29,7 @@ class _InquiryPostScreenState extends State<InquiryPostScreen> {
           centerTitle: true,
           elevation: 0,
           leadingWidth: 70,
-          leading: GestureDetector(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 20),
-              child: CircleAvatar(
-                radius: 38.0,
-                backgroundColor: kAppBgMediumShade,
-                child: ClipOval(
-                  child: SvgPicture.asset(
-                    'assets/icons/avatar-default.svg',
-                    height: 50,
-                  ),
-                ),
-              ),
-            ),
-            onTap: () {},
-          ),
+          foregroundColor: kPrimaryColor,
           backgroundColor: kAppBgColor,
           actions: [
             Padding(
@@ -200,7 +184,7 @@ class _InquiryPostScreenState extends State<InquiryPostScreen> {
                                   children: [
                                     Icon(
                                       Icons.camera_alt,
-                                      color: kGreyLightShade,
+                                      color: kAppBgColor,
                                     ),
                                     const SizedBox(
                                       width: 6.0,

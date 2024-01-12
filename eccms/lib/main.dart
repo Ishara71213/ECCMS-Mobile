@@ -1,8 +1,8 @@
-import 'package:eccms/Core/common/presentation/bloc/inquiry/cubit/inquiry_cubit.dart';
 import 'package:eccms/config/routes/on_generate_route.dart';
 import 'package:eccms/config/routes/route_const.dart';
 import 'package:eccms/features/auth/presentation/bloc/auth/auth_cubit.dart';
 import 'package:eccms/features/auth/presentation/bloc/user/cubit/user_cubit.dart';
+import 'package:eccms/features/inquiry/presentation/bloc/inquiry/cubit/inquiry_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:eccms/core/service_locator/injection_container.dart' as di;
