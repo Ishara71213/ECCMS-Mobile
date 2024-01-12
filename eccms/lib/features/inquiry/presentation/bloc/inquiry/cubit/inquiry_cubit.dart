@@ -1,5 +1,19 @@
 import 'dart:io';
 
+import 'package:eccms/features/auth/domain/usecases/get_current_uid_usecase.dart';
+import 'package:eccms/features/inquiry/domain/usecases/inquiry/get_all_by_employee_id.dart';
+import 'package:eccms/features/inquiry/domain/usecases/inquiry/get_all_by_user_id.dart';
+import 'package:eccms/features/inquiry/domain/usecases/inquiry/post_inquiry.dart';
+import 'package:eccms/features/organization/domain/usecases/branch/get_all_branches.dart';
+import 'package:eccms/features/organization/domain/usecases/branch/post_branch.dart';
+import 'package:eccms/features/organization/domain/usecases/cities/get_all_cities.dart';
+import 'package:eccms/features/organization/domain/usecases/cities/post_city.dart';
+import 'package:eccms/features/organization/domain/usecases/crime_type/get_all_crime_type.dart';
+import 'package:eccms/features/organization/domain/usecases/crime_type/get_all_crime_type_by_institution_id.dart';
+import 'package:eccms/features/organization/domain/usecases/crime_type/post_crime_type.dart';
+import 'package:eccms/features/organization/domain/usecases/institutions/get_all_institutions.dart';
+import 'package:eccms/features/organization/domain/usecases/province/get_all_provinces.dart';
+import 'package:eccms/features/organization/domain/usecases/province/post_province.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
@@ -9,7 +23,38 @@ import 'package:permission_handler/permission_handler.dart';
 part 'inquiry_state.dart';
 
 class InquiryCubit extends Cubit<InquiryState> {
-  InquiryCubit() : super(InquiryInitial());
+  final GetAllByUserIdUsecase getAllByUserIdUsecase;
+  final GetAllByEmployeeIdUsecase getAllByEmployeeIdUsecase;
+  final PostInquiryUsecase postInquiryUsecase;
+  final GetAllBranchesUsecase getAllBranchesUsecase;
+  final GetAllCitiesUsecase getAllCitiesUsecase;
+  final GetAllCrimeTypeUsecase getAllCrimeTypesUsecase;
+  final GetAllCrimeTypeByInstitutionIdUsecase
+      getAllCrimeTypesByInstitutionIdUsecase;
+  final GetAllInstitutionsUsecase getAllInstitutionsUsecase;
+  final GetAllProvincesUsecase getAllProvincesUsecase;
+  final PostBranchUsecase postBranchUsecase;
+  final PostCityUsecase postCityUsecase;
+  final PostCrimeTypeUsecase postCrimeTypeUsecase;
+  final PostProvinceUsecase postProvinceUsecase;
+  final GetCurrentUIdUsecase getCurrentUIdUsecase;
+
+  InquiryCubit({
+    required this.getAllByUserIdUsecase,
+    required this.getAllByEmployeeIdUsecase,
+    required this.postInquiryUsecase,
+    required this.getAllBranchesUsecase,
+    required this.getAllCitiesUsecase,
+    required this.getAllCrimeTypesUsecase,
+    required this.getAllCrimeTypesByInstitutionIdUsecase,
+    required this.getAllInstitutionsUsecase,
+    required this.getAllProvincesUsecase,
+    required this.postBranchUsecase,
+    required this.postCityUsecase,
+    required this.postCrimeTypeUsecase,
+    required this.postProvinceUsecase,
+    required this.getCurrentUIdUsecase,
+  }) : super(InquiryInitial());
 
   File? imageFile;
   XFile? imageFileCompressed;

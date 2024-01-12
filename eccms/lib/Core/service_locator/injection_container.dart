@@ -15,6 +15,10 @@ import 'package:eccms/features/inquiry/data/data_sources/remote/inquiry/inquiry_
 import 'package:eccms/features/inquiry/data/data_sources/remote/inquiry/inquiry_remote_data_source_impl.dart';
 import 'package:eccms/features/inquiry/data/repository_impl/inquiry_repository_impl.dart';
 import 'package:eccms/features/inquiry/domain/repository/inquiry_repository.dart';
+import 'package:eccms/features/inquiry/domain/usecases/inquiry/get_all_by_employee_id.dart';
+import 'package:eccms/features/inquiry/domain/usecases/inquiry/get_all_by_id.dart';
+import 'package:eccms/features/inquiry/domain/usecases/inquiry/get_all_by_user_id.dart';
+import 'package:eccms/features/inquiry/domain/usecases/inquiry/post_inquiry.dart';
 import 'package:eccms/features/inquiry/presentation/bloc/inquiry/cubit/inquiry_cubit.dart';
 import 'package:eccms/features/organization/data/data_sources/remote/organization_data_remote_data_source.dart';
 import 'package:eccms/features/organization/data/data_sources/remote/organization_data_remote_data_source_impl.dart';
@@ -57,7 +61,22 @@ Future<void> init() async {
       getCurrentUIdUsecase: sl.call(),
       getCurrentUserByUidUsecase: sl.call()));
 
-  sl.registerFactory<InquiryCubit>(() => InquiryCubit());
+  sl.registerFactory<InquiryCubit>(() => InquiryCubit(
+        getAllByUserIdUsecase: sl.call(),
+        getAllByEmployeeIdUsecase: sl.call(),
+        postInquiryUsecase: sl.call(),
+        getAllBranchesUsecase: sl.call(),
+        getAllCitiesUsecase: sl.call(),
+        getAllCrimeTypesUsecase: sl.call(),
+        getAllCrimeTypesByInstitutionIdUsecase: sl.call(),
+        getAllInstitutionsUsecase: sl.call(),
+        getAllProvincesUsecase: sl.call(),
+        postBranchUsecase: sl.call(),
+        postCityUsecase: sl.call(),
+        postCrimeTypeUsecase: sl.call(),
+        postProvinceUsecase: sl.call(),
+        getCurrentUIdUsecase: sl.call(),
+      ));
 
   //usecase
 
@@ -115,6 +134,16 @@ Future<void> init() async {
   sl.registerLazySingleton<PostProvinceUsecase>(
       () => PostProvinceUsecase(repository: sl.call()));
 
+  // Register use cases
+  sl.registerLazySingleton<GetAllByUserIdUsecase>(
+      () => GetAllByUserIdUsecase(repository: sl.call()));
+  sl.registerLazySingleton<GetAllByEmployeeIdUsecase>(
+      () => GetAllByEmployeeIdUsecase(repository: sl.call()));
+  sl.registerLazySingleton<PostInquiryUsecase>(
+      () => PostInquiryUsecase(repository: sl.call()));
+  sl.registerLazySingleton<GetAllByIdUsecase>(
+      () => GetAllByIdUsecase(repository: sl.call()));
+
   //repositories
   sl.registerLazySingleton<AuthRepository>(
       () => AuthRepositoryImpl(remoteDataSource: sl.call()));
@@ -129,8 +158,10 @@ Future<void> init() async {
       () => InstitutionRepositoryImpl(remoteDataSource: sl.call()));
   sl.registerLazySingleton<ProvinceRepository>(
       () => ProvinceRepositoryImpl(remoteDataSource: sl.call()));
+
   sl.registerLazySingleton<InquiryRepository>(
       () => InquiryRepositoryImpl(remoteDataSource: sl.call()));
+
   //data source
   sl.registerLazySingleton<AuthEccmsRemoteDataSource>(
       () => AuthEccmsRemoteDataSourceImpl());

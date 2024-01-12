@@ -90,4 +90,28 @@ class InquiryModel extends InquiryEntity {
       'rating': rating,
     };
   }
+
+  factory InquiryModel.fromEntity(InquiryEntity entity) {
+    return InquiryModel(
+      id: entity.id,
+      userId: entity.userId,
+      employeeId: entity.employeeId,
+      branchId: entity.branchId,
+      institutionId: entity.institutionId,
+      crimeTypeId: entity.crimeTypeId,
+      crimeTypeName: entity.crimeTypeName,
+      ticketId: entity.ticketId,
+      status: entity.status,
+      inquiryEntry: entity.inquiryEntry,
+      userAttachment: entity.userAttachment,
+      reviewingResponse: entity.reviewingResponse,
+      assignResponse: entity.assignResponse,
+      investigatingResponse: entity.investigatingResponse,
+      investigatingAttachment: entity.investigatingAttachment,
+      completeResponse: entity.completeResponse,
+      userComment: entity.userComment,
+      isSatisfied: entity.isSatisfied,
+      rating: entity.rating,
+    );
+  }
 }
