@@ -27,33 +27,33 @@ class InquiryCubit extends Cubit<InquiryState> {
   final GetAllByUserIdUsecase getAllByUserIdUsecase;
   final GetAllByEmployeeIdUsecase getAllByEmployeeIdUsecase;
   final PostInquiryUsecase postInquiryUsecase;
-  final GetAllBranchesUsecase getAllBranchesUsecase;
-  final GetAllCitiesUsecase getAllCitiesUsecase;
+  // final GetAllBranchesUsecase getAllBranchesUsecase;
+  // final GetAllCitiesUsecase getAllCitiesUsecase;
   final GetAllCrimeTypeUsecase getAllCrimeTypesUsecase;
   final GetAllCrimeTypeByInstitutionIdUsecase
       getAllCrimeTypesByInstitutionIdUsecase;
   final GetAllInstitutionsUsecase getAllInstitutionsUsecase;
-  final GetAllProvincesUsecase getAllProvincesUsecase;
-  final PostBranchUsecase postBranchUsecase;
-  final PostCityUsecase postCityUsecase;
+  // final GetAllProvincesUsecase getAllProvincesUsecase;
+  // final PostBranchUsecase postBranchUsecase;
+  // final PostCityUsecase postCityUsecase;
   final PostCrimeTypeUsecase postCrimeTypeUsecase;
-  final PostProvinceUsecase postProvinceUsecase;
+  //final PostProvinceUsecase postProvinceUsecase;
   final GetCurrentUIdUsecase getCurrentUIdUsecase;
 
   InquiryCubit({
     required this.getAllByUserIdUsecase,
     required this.getAllByEmployeeIdUsecase,
     required this.postInquiryUsecase,
-    required this.getAllBranchesUsecase,
-    required this.getAllCitiesUsecase,
+    // required this.getAllBranchesUsecase,
+    // required this.getAllCitiesUsecase,
     required this.getAllCrimeTypesUsecase,
     required this.getAllCrimeTypesByInstitutionIdUsecase,
     required this.getAllInstitutionsUsecase,
-    required this.getAllProvincesUsecase,
-    required this.postBranchUsecase,
-    required this.postCityUsecase,
+    // required this.getAllProvincesUsecase,
+    // required this.postBranchUsecase,
+    // required this.postCityUsecase,
     required this.postCrimeTypeUsecase,
-    required this.postProvinceUsecase,
+    //required this.postProvinceUsecase,
     required this.getCurrentUIdUsecase,
   }) : super(InquiryInitial());
 
@@ -143,7 +143,7 @@ class InquiryCubit extends Cubit<InquiryState> {
 
   void onSubmit(BuildContext context) {
     try {
-      var cities = getAllCitiesUsecase.call();
+      // var cities = getAllCitiesUsecase.call();
     } catch (e) {
       // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context)
