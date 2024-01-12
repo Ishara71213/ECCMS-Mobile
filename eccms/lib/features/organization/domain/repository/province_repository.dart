@@ -1,1 +1,1 @@
-abstract class ProvincesRepository {}
+abstract class ProvinceRepository {}

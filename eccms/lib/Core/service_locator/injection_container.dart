@@ -13,9 +13,21 @@ import 'package:eccms/features/auth/presentation/bloc/auth/auth_cubit.dart';
 import 'package:eccms/features/auth/presentation/bloc/user/cubit/user_cubit.dart';
 import 'package:eccms/features/inquiry/data/data_sources/remote/inquiry/inquiry_remote_data_source.dart';
 import 'package:eccms/features/inquiry/data/data_sources/remote/inquiry/inquiry_remote_data_source_impl.dart';
+import 'package:eccms/features/inquiry/data/repository_impl/inquiry_repository_impl.dart';
+import 'package:eccms/features/inquiry/domain/repository/inquiry_repository.dart';
 import 'package:eccms/features/inquiry/presentation/bloc/inquiry/cubit/inquiry_cubit.dart';
-import 'package:eccms/features/organization/data/data_sources/remote/organization_data/organization_data_remote_data_source.dart';
-import 'package:eccms/features/organization/data/data_sources/remote/organization_data/organization_data_remote_data_source_impl.dart';
+import 'package:eccms/features/organization/data/data_sources/remote/organization_data_remote_data_source.dart';
+import 'package:eccms/features/organization/data/data_sources/remote/organization_data_remote_data_source_impl.dart';
+import 'package:eccms/features/organization/data/repository_impl/branches_repository_impl.dart';
+import 'package:eccms/features/organization/data/repository_impl/cities_repository_impl.dart';
+import 'package:eccms/features/organization/data/repository_impl/crime_type_repository_impl.dart';
+import 'package:eccms/features/organization/data/repository_impl/institution_repository_impl.dart';
+import 'package:eccms/features/organization/data/repository_impl/province_repository_impl.dart';
+import 'package:eccms/features/organization/domain/repository/branches_repository.dart';
+import 'package:eccms/features/organization/domain/repository/cities_repository.dart';
+import 'package:eccms/features/organization/domain/repository/crime_type_repository.dart';
+import 'package:eccms/features/organization/domain/repository/institution_repository.dart';
+import 'package:eccms/features/organization/domain/repository/province_repository.dart';
 import 'package:get_it/get_it.dart';
 
 GetIt sl = GetIt.instance;
@@ -59,6 +71,18 @@ Future<void> init() async {
   sl.registerLazySingleton<AuthRepository>(
       () => AuthRepositoryImpl(remoteDataSource: sl.call()));
 
+  sl.registerLazySingleton<BranchesRepository>(
+      () => BranchesRepositoryImpl(remoteDataSource: sl.call()));
+  sl.registerLazySingleton<CitiesRepository>(
+      () => CitiesRepositoryImpl(remoteDataSource: sl.call()));
+  sl.registerLazySingleton<CrimeTypeRepository>(
+      () => CrimeTypeRepositoryImpl(remoteDataSource: sl.call()));
+  sl.registerLazySingleton<InstitutionRepository>(
+      () => InstitutionRepositoryImpl(remoteDataSource: sl.call()));
+  sl.registerLazySingleton<ProvinceRepository>(
+      () => ProvinceRepositoryImpl(remoteDataSource: sl.call()));
+  sl.registerLazySingleton<InquiryRepository>(
+      () => InquiryRepositoryImpl(remoteDataSource: sl.call()));
   //data source
   sl.registerLazySingleton<AuthEccmsRemoteDataSource>(
       () => AuthEccmsRemoteDataSourceImpl());
