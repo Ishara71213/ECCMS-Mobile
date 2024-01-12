@@ -1,3 +1,16 @@
+import 'package:eccms/Core/common/presentation/bloc/inquiry/cubit/inquiry_cubit.dart';
+import 'package:eccms/features/app_features/domain/usecases/get_email_by_uid.dart';
+import 'package:eccms/features/auth/data/data_sources/remote/auth_eccms_remote_data_source.dart';
+import 'package:eccms/features/auth/data/data_sources/remote/auth_ecms_remote_data_source_impl.dart';
+import 'package:eccms/features/auth/data/repository_impl/auth_repository_impl.dart';
+import 'package:eccms/features/auth/domain/repository/Auth_repository.dart';
+import 'package:eccms/features/auth/domain/usecases/get_create_current_user_usecase.dart';
+import 'package:eccms/features/auth/domain/usecases/get_current_uid_usecase.dart';
+import 'package:eccms/features/auth/domain/usecases/get_current_user_by_uid_usecase.dart';
+import 'package:eccms/features/auth/domain/usecases/is_sign_in_usecase.dart';
+import 'package:eccms/features/auth/domain/usecases/sign_in_usecase.dart';
+import 'package:eccms/features/auth/domain/usecases/sign_out_usecase.dart';
+import 'package:eccms/features/auth/domain/usecases/sign_up_usecase.dart';
 import 'package:eccms/features/auth/presentation/bloc/auth/auth_cubit.dart';
 import 'package:eccms/features/auth/presentation/bloc/user/cubit/user_cubit.dart';
 import 'package:get_it/get_it.dart';
@@ -18,108 +31,37 @@ Future<void> init() async {
       getCurrentUIdUsecase: sl.call(),
       getCurrentUserByUidUsecase: sl.call()));
 
-  // sl.registerFactory<ProfileCubit>(() => ProfileCubit(
-  //     updateProfileDataUsecase: sl.call(),
-  //     updateProfileImageUsecase: sl.call()));
-  // sl.registerFactory<ViuserCubit>(() => ViuserCubit(
-  //     getCurrentViUserById: sl.call(), getEmailByUidUsecase: sl.call()));
-  // sl.registerFactory<GuardianCubit>(() => GuardianCubit(
-  //     getCurrentGuardianUserById: sl.call(),
-  //     getEmailByUidUsecase: sl.call(),
-  //     liveLocationDataMonitotUsecase: sl.call()));
-
-  // sl.registerFactory<VolunteerSupportCubit>(() => VolunteerSupportCubit(
-  //     getAllRequestUsecase: sl.call(),
-  //     submitRequestUsecase: sl.call(),
-  //     getRequestByIdUsecase: sl.call(),
-  //     deleteRequestUsecase: sl.call(),
-  //     getCurrentUIdUsecase: sl.call(),
-  //     acceptRequestByIdUsecase: sl.call(),
-  //     rejectRequestByIdUsecase: sl.call(),
-  //     getEmailByUidUseCae: sl.call(),
-  //     uploadimageUsecase: sl.call()));
+  sl.registerFactory<InquiryCubit>(() => InquiryCubit());
 
   //usecase
 
   //--auth usecases
-  // sl.registerLazySingleton<SignInUsecase>(
-  //     () => SignInUsecase(repository: sl.call()));
-  // sl.registerLazySingleton<SignOutUsecase>(
-  //     () => SignOutUsecase(repository: sl.call()));
-  // sl.registerLazySingleton<SignUpUsecase>(
-  //     () => SignUpUsecase(repository: sl.call()));
-  // sl.registerLazySingleton<IsSignInUsecase>(
-  //     () => IsSignInUsecase(repository: sl.call()));
-  // sl.registerLazySingleton<GetCurrentUIdUsecase>(
-  //     () => GetCurrentUIdUsecase(repository: sl.call()));
-  // sl.registerLazySingleton<GetCreateCurrentUserUsecase>(
-  //     () => GetCreateCurrentUserUsecase(repository: sl.call()));
-  // sl.registerLazySingleton<GetCurrentUserByUidUsecase>(
-  //     () => GetCurrentUserByUidUsecase(repository: sl.call()));
-
-  //user info usecases
-  // sl.registerLazySingleton<CreateCurrentViUserTypeInfo>(
-  //     () => CreateCurrentViUserTypeInfo(repository: sl.call()));
-  // sl.registerLazySingleton<CreateCurrentguardianUserTypeInfo>(
-  //     () => CreateCurrentguardianUserTypeInfo(repository: sl.call()));
-  // sl.registerLazySingleton<GetCurrentUIdGlobalUsecase>(
-  //     () => GetCurrentUIdGlobalUsecase(repository: sl.call()));
-  // sl.registerLazySingleton<GetUIdByEmailUsecase>(
-  //     () => GetUIdByEmailUsecase(repository: sl.call()));
-  // sl.registerLazySingleton<SetSpecificFieldByUserNameUsecase>(
-  //     () => SetSpecificFieldByUserNameUsecase(repository: sl.call()));
+  sl.registerLazySingleton<SignInUsecase>(
+      () => SignInUsecase(repository: sl.call()));
+  sl.registerLazySingleton<SignOutUsecase>(
+      () => SignOutUsecase(repository: sl.call()));
+  sl.registerLazySingleton<SignUpUsecase>(
+      () => SignUpUsecase(repository: sl.call()));
+  sl.registerLazySingleton<IsSignInUsecase>(
+      () => IsSignInUsecase(repository: sl.call()));
+  sl.registerLazySingleton<GetCurrentUIdUsecase>(
+      () => GetCurrentUIdUsecase(repository: sl.call()));
+  sl.registerLazySingleton<GetCreateCurrentUserUsecase>(
+      () => GetCreateCurrentUserUsecase(repository: sl.call()));
+  sl.registerLazySingleton<GetCurrentUserByUidUsecase>(
+      () => GetCurrentUserByUidUsecase(repository: sl.call()));
 
   //App features usecases
-  // sl.registerLazySingleton<UpdateProfileDataUsecase>(
-  //     () => UpdateProfileDataUsecase(repository: sl.call()));
-  // sl.registerLazySingleton<UpdateProfileImageUsecase>(
-  //     () => UpdateProfileImageUsecase(repository: sl.call()));
-  // sl.registerLazySingleton<GetCurrentViUserInfoByUidUsecase>(
-  //     () => GetCurrentViUserInfoByUidUsecase(repository: sl.call()));
-  // sl.registerLazySingleton<GetCurrentGuardianInfoByUidUsecase>(
-  //     () => GetCurrentGuardianInfoByUidUsecase(repository: sl.call()));
-  // sl.registerLazySingleton<GetEmailByUidUsecase>(
-  //     () => GetEmailByUidUsecase(repository: sl.call()));
-
-  // sl.registerLazySingleton<GetAllPostUsecase>(
-  //     () => GetAllPostUsecase(repository: sl.call()));
-  // sl.registerLazySingleton<SubmitPosteUsecase>(
-  //     () => SubmitPosteUsecase(repository: sl.call()));
-  // sl.registerLazySingleton<UploadimageUsecase>(
-  //     () => UploadimageUsecase(repository: sl.call()));
+  sl.registerLazySingleton<GetEmailByUidUsecase>(
+      () => GetEmailByUidUsecase(repository: sl.call()));
 
   //repositories
-  // sl.registerLazySingleton<FirebaseRepository>(
-  //     () => FirebaseRepositoryImpl(remoteDataSource: sl.call()));
-  // sl.registerLazySingleton<UserInfoRepository>(
-  //     () => UserInfoRepositoryImpl(remoteDataSource: sl.call()));
-  // sl.registerLazySingleton<AppFeaturesRepository>(
-  //     () => AppFeaturesRepositoryImpl(remoteDataSource: sl.call()));
-  // sl.registerLazySingleton<ViUserProfileRepository>(
-  //     () => ViUserProfileRepositoryImpl(remoteDataSource: sl.call()));
-  // sl.registerLazySingleton<VolunteerSupportRepository>(
-  //     () => VolunteerSupportRepositoryImpl(remoteDataSource: sl.call()));
-  // sl.registerLazySingleton<GuardianUserProfileRepository>(
-  //     () => GuardianUserProfileRepositoryImpl(remoteDataSource: sl.call()));
+  sl.registerLazySingleton<AuthRepository>(
+      () => AuthRepositoryImpl(remoteDataSource: sl.call()));
 
   //data source
-  // sl.registerLazySingleton<FirebaseRemoteDataSource>(() =>
-  //     FirebaseRemoteDataSourceImpl(auth: sl.call(), firestore: sl.call()));
-  // sl.registerLazySingleton<UserInfoFirebaseRemoteDataSource>(() =>
-  //     UserInfoFirebaseRemoteDataSourceImpl(
-  //         auth: sl.call(), firestore: sl.call()));
-  // sl.registerLazySingleton<AppFeaturesFirebaseRemoteDataSource>(() =>
-  //     AppFeaturesFirebaseRemoteDataSourceImpl(
-  //         auth: sl.call(), firestore: sl.call()));
-  // sl.registerLazySingleton<ViProfileFirebaseRemoteDataSource>(() =>
-  //     ViProfileFirebaseRemoteDataSourceImpl(
-  //         auth: sl.call(), firestore: sl.call()));
-  // sl.registerLazySingleton<GuardianProfileFirebaseRemoteDataSource>(() =>
-  //     GuardianProfileFirebaseRemoteDataSourceImpl(
-  //         auth: sl.call(), firestore: sl.call()));
-  // sl.registerLazySingleton<VolunteerSupportRemoteDataSource>(() =>
-  //     VolunteerSupportRemoteDataSourceImpl(
-  //         auth: sl.call(), firestore: sl.call()));
+  sl.registerLazySingleton<AuthEccmsRemoteDataSource>(
+      () => AuthEccmsRemoteDataSourceImpl());
 
   //external
   // final auth = FirebaseAuth.instance;
@@ -127,4 +69,6 @@ Future<void> init() async {
 
   // sl.registerLazySingleton(() => auth);
   // sl.registerLazySingleton(() => firestore);
+
+  //sl.registerLazySingleton(() => firestore);
 }

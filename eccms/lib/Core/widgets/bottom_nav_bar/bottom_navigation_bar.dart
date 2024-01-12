@@ -1,8 +1,9 @@
-import 'package:eccms/Core/Utils/functions/navigator_handler.dart';
-import 'package:eccms/Core/enum/constants/constants.dart';
-import 'package:eccms/Core/routes/route_const.dart';
+import 'package:eccms/Core/Utils/navigator_handler.dart';
+import 'package:eccms/config/routes/route_const.dart';
+import 'package:eccms/config/theme/app_themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'dart:developer' as dev;
 
 class BottomNavBar extends StatefulWidget {
   final int selectedIndex;
@@ -16,19 +17,17 @@ class _BottomNavBarState extends State<BottomNavBar> {
   int selectedIndex = 0;
   List<String> data = [
     'assets/icons/Home.svg',
-    'assets/icons/Community.svg',
     'assets/icons/chat.svg',
-    'assets/icons/Guide.svg',
-    // 'assets/icons/navigation-Products.svg',
+    'assets/icons/Community.svg',
   ];
 
-  List<String> iconNames = ['Home', 'Community', 'Requests', 'Guide'];
+  List<String> iconNames = ['Home', 'Complains', 'Add Complain'];
 
   @override
   void initState() {
     setState(() {
       selectedIndex = widget.selectedIndex;
-      print(selectedIndex);
+      dev.log(selectedIndex.toString());
     });
 
     super.initState();
@@ -56,7 +55,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 onTap: () {
                   setState(() {
                     if (index == 0) {
-                      navigationHandlerByUserType(
+                      NavigationHandler.navigateByUserType(
                           context,
                           RouteConst.homeOfficerUserScreen,
                           RouteConst.homeAdminUserScreen,
@@ -67,8 +66,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
                     } else if (index == 2) {
                       // navigationHandler(
                       //     context, RouteConst.volunteerSupportScreen);
-                    } else if (index == 3) {
-                      // navigationHandler(context, RouteConst.guideScreen);
                     }
                   });
                 },
@@ -81,6 +78,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                       child: SvgPicture.asset(
                         data[index],
                         height: 25,
+                        // ignore: deprecated_member_use
                         color: selectedIndex == index
                             ? Colors.white.withOpacity(0.9)
                             : Colors.white.withOpacity(0.5),

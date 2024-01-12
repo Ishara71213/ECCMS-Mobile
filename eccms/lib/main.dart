@@ -1,5 +1,6 @@
-import 'package:eccms/Core/routes/on_generate_route.dart';
-import 'package:eccms/Core/routes/route_const.dart';
+import 'package:eccms/Core/common/presentation/bloc/inquiry/cubit/inquiry_cubit.dart';
+import 'package:eccms/config/routes/on_generate_route.dart';
+import 'package:eccms/config/routes/route_const.dart';
 import 'package:eccms/features/auth/presentation/bloc/auth/auth_cubit.dart';
 import 'package:eccms/features/auth/presentation/bloc/user/cubit/user_cubit.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,7 @@ class VisionMateApp extends StatelessWidget {
         BlocProvider<AuthCubit>(
             create: (_) => di.sl<AuthCubit>()..appStarted()),
         BlocProvider<UserCubit>(create: (_) => di.sl<UserCubit>()),
-        // BlocProvider<UserInfoCubit>(create: (_) => di.sl<UserInfoCubit>()),
+        BlocProvider<InquiryCubit>(create: (_) => di.sl<InquiryCubit>()),
         // BlocProvider<ViuserCubit>(create: (_) => di.sl<ViuserCubit>()),
         // BlocProvider<GuardianCubit>(create: (_) => di.sl<GuardianCubit>()),
         // BlocProvider<ProfileCubit>(create: (_) => di.sl<ProfileCubit>()),

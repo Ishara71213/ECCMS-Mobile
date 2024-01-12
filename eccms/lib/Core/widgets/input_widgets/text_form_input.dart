@@ -10,6 +10,7 @@ class TextFormInput extends StatelessWidget {
   final RegExp? regExp;
   final String? validatorMsg;
   final Color? fillColor;
+  final bool obscureText;
 
   const TextFormInput(
       {super.key,
@@ -21,7 +22,8 @@ class TextFormInput extends StatelessWidget {
       this.validatorMsg,
       this.fillColor,
       this.isTextArea = false,
-      this.isMandotary = false});
+      this.isMandotary = false,
+      this.obscureText = false});
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +34,8 @@ class TextFormInput extends StatelessWidget {
           return (validatorMsg != null && validatorMsg != "")
               ? validatorMsg
               : fieldName != null && fieldName != ""
-                  ? "$fieldName Field can't be Empty"
-                  : "Field can't be Empty";
+                  ? "$fieldName Field required"
+                  : "Field required";
         } else {
           return null;
         }
@@ -47,15 +49,6 @@ class TextFormInput extends StatelessWidget {
         }
       } else {
         return null;
-        // if (value!.isEmpty) {
-        //   return (validatorMsg != null && validatorMsg != "")
-        //       ? validatorMsg
-        //       : fieldName != null && fieldName != ""
-        //           ? "$fieldName Field can't be Empty"
-        //           : "Field can't be Empty";
-        // } else {
-        //   return null;
-        // }
       }
     }
 
@@ -65,34 +58,41 @@ class TextFormInput extends StatelessWidget {
       style: kInputFieldText,
       maxLines: isTextArea ? 5 : 1,
       controller: controller,
+      obscureText: obscureText,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: InputDecoration(
           contentPadding:
-              const EdgeInsets.symmetric(horizontal: 12, vertical: 18),
+              const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
           hintText: hintText,
           prefixIcon: prefixIcon,
-          prefixIconColor: kGrey,
-          hintStyle: kInputFieldHintText,
+          prefixIconColor: kPrefixIconColor,
+          hintStyle: kInputFieldHintLighterText,
           filled: true,
           fillColor: fillColor ?? kInputFieldBgColor,
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.0),
               borderSide: BorderSide(
-                  width: 2, style: BorderStyle.solid, color: kLightGreyColor)),
+                  width: 2,
+                  style: BorderStyle.solid,
+                  color: kInputFieldFocusStrokeColor)),
           errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.0),
               borderSide: BorderSide(
-                  width: 2, style: BorderStyle.solid, color: kErrorColor)),
+                  width: 2,
+                  style: BorderStyle.solid,
+                  color: kInputFieldErrorStrokeColor)),
           focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.0),
               borderSide: BorderSide(
-                  width: 2, style: BorderStyle.solid, color: kErrorColor)),
+                  width: 2,
+                  style: BorderStyle.solid,
+                  color: kInputFieldErrorStrokeColor)),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.0),
               borderSide: BorderSide(
                   width: 1.4,
                   style: BorderStyle.solid,
-                  color: kLightGreyColor))),
+                  color: kAppBgMediumShade))),
     );
   }
 }

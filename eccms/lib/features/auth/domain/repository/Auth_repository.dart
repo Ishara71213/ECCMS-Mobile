@@ -1,4 +1,4 @@
-import 'package:eccms/Core/common/entities/user_entity.dart';
+import 'package:eccms/Core/common/domain/entities/user_entity.dart';
 
 abstract class AuthRepository {
   Future<bool> isSignIn();

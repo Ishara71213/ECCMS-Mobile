@@ -50,14 +50,16 @@ class _DropdownFromListInputState extends State<DropdownFromListInput> {
       decoration: InputDecoration(
           hintText: widget.hintText,
           prefixIcon: widget.prefixIcon,
-          prefixIconColor: kGrey,
+          prefixIconColor: kGreyMediumShade,
           hintStyle: kInputFieldHintText,
           filled: true,
           fillColor: kInputFieldBgColor,
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.0),
               borderSide: BorderSide(
-                  width: 2, style: BorderStyle.solid, color: kLightGreyColor)),
+                  width: 2,
+                  style: BorderStyle.solid,
+                  color: kAppBgLighterShade)),
           errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.0),
               borderSide: BorderSide(
@@ -71,7 +73,7 @@ class _DropdownFromListInputState extends State<DropdownFromListInput> {
               borderSide: BorderSide(
                   width: 1.4,
                   style: BorderStyle.solid,
-                  color: kLightGreyColor))),
+                  color: kAppBgLighterShade))),
     );
   }
 }

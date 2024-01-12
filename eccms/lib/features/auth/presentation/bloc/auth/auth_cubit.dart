@@ -1,11 +1,11 @@
 import 'dart:io';
 
-import 'package:bloc/bloc.dart';
 import 'package:eccms/features/auth/domain/usecases/get_current_uid_usecase.dart';
 import 'package:eccms/features/auth/domain/usecases/is_sign_in_usecase.dart';
 import 'package:eccms/features/auth/domain/usecases/sign_out_usecase.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 part 'auth_state.dart';
@@ -33,8 +33,6 @@ class AuthCubit extends Cubit<AuthState> {
     } on SocketException catch (_) {
       emit(UnAuthenticated());
     } catch (e) {
-      print(e.toString());
-
       emit(UnAuthenticated());
     }
   }
@@ -65,7 +63,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> signOut() async {
     try {
-      imageCache?.clear();
+      imageCache.clear();
       imageCache.clearLiveImages();
       imageCache.containsKey('profileimage');
       DefaultCacheManager().emptyCache();

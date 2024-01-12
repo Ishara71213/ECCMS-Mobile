@@ -1,11 +1,11 @@
-import 'package:eccms/Core/common/entities/user_entity.dart';
+import 'package:eccms/Core/common/domain/entities/user_entity.dart';
 
-abstract class IAuthEccmsRemoteDataSource {
+abstract class AuthEccmsRemoteDataSource {
   Future<bool> isSignIn();
-  Future<void> signIn(UserEntity user);
-  Future<void> signUp(UserEntity user);
+  Future<void> signIn(UserEntity entity);
+  Future<void> signUp(UserEntity entity);
   Future<void> signOut();
   Future<String> getCurrentUId();
-  Future<void> getCreateCurrentUser(UserEntity user);
+  Future<void> getCreateCurrentUser(UserEntity entity);
   Future<UserEntity> getCurrentUserById();
 }
