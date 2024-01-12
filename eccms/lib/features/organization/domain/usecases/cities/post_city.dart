@@ -1,10 +1,10 @@
 import 'package:eccms/features/organization/domain/entities/city_entity.dart';
-import 'package:eccms/features/organization/domain/repository/Cities_repository.dart';
+import 'package:eccms/features/organization/domain/repository/city_repository.dart';
 
 class PostCityUsecase {
-  final CitiesRepository _repository;
+  final CityRepository _repository;
 
-  PostCityUsecase({required CitiesRepository repository})
+  PostCityUsecase({required CityRepository repository})
       : _repository = repository;
 
   Future<void> call(CityEntity entity) async {

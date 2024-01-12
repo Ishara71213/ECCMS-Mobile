@@ -4,17 +4,10 @@ import 'package:eccms/features/auth/domain/usecases/get_current_uid_usecase.dart
 import 'package:eccms/features/inquiry/domain/usecases/inquiry/get_all_by_employee_id.dart';
 import 'package:eccms/features/inquiry/domain/usecases/inquiry/get_all_by_user_id.dart';
 import 'package:eccms/features/inquiry/domain/usecases/inquiry/post_inquiry.dart';
-import 'package:eccms/features/organization/domain/entities/city_entity.dart';
-import 'package:eccms/features/organization/domain/usecases/branch/get_all_branches.dart';
-import 'package:eccms/features/organization/domain/usecases/branch/post_branch.dart';
-import 'package:eccms/features/organization/domain/usecases/cities/get_all_cities.dart';
-import 'package:eccms/features/organization/domain/usecases/cities/post_city.dart';
 import 'package:eccms/features/organization/domain/usecases/crime_type/get_all_crime_type.dart';
 import 'package:eccms/features/organization/domain/usecases/crime_type/get_all_crime_type_by_institution_id.dart';
 import 'package:eccms/features/organization/domain/usecases/crime_type/post_crime_type.dart';
 import 'package:eccms/features/organization/domain/usecases/institutions/get_all_institutions.dart';
-import 'package:eccms/features/organization/domain/usecases/province/get_all_provinces.dart';
-import 'package:eccms/features/organization/domain/usecases/province/post_province.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';

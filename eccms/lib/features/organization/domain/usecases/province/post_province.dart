@@ -1,10 +1,10 @@
 import 'package:eccms/features/organization/domain/entities/province_entity.dart';
-import 'package:eccms/features/organization/domain/repository/Province_repository.dart';
+import 'package:eccms/features/organization/domain/repository/provinces_repository.dart';
 
 class PostProvinceUsecase {
-  final ProvinceRepository _repository;
+  final ProvincesRepository _repository;
 
-  PostProvinceUsecase({required ProvinceRepository repository})
+  PostProvinceUsecase({required ProvincesRepository repository})
       : _repository = repository;
 
   Future<void> call(ProvinceEntity entity) async {

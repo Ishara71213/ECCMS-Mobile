@@ -1,8 +1,8 @@
 import 'package:eccms/features/organization/data/data_sources/remote/organization_data_remote_data_source.dart';
 import 'package:eccms/features/organization/domain/entities/city_entity.dart';
-import 'package:eccms/features/organization/domain/repository/cities_repository.dart';
+import 'package:eccms/features/organization/domain/repository/city_repository.dart';
 
-class CitiesRepositoryImpl extends CitiesRepository {
+class CitiesRepositoryImpl extends CityRepository {
   final OrganizationDataRemoteDataSource remoteDataSource;
 
   CitiesRepositoryImpl({required this.remoteDataSource});

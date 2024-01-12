@@ -18,6 +18,32 @@ import 'package:eccms/features/inquiry/domain/repository/inquiry_repository.dart
 import 'package:eccms/features/inquiry/domain/usecases/inquiry/get_all_by_employee_id.dart';
 import 'package:eccms/features/inquiry/domain/usecases/inquiry/get_all_by_id.dart';
 import 'package:eccms/features/inquiry/domain/usecases/inquiry/get_all_by_user_id.dart';
+import 'package:eccms/features/inquiry/domain/usecases/inquiry/post_inquiry.dart';
+import 'package:eccms/features/inquiry/presentation/bloc/inquiry/cubit/inquiry_cubit.dart';
+import 'package:eccms/features/organization/data/data_sources/remote/organization_data_remote_data_source.dart';
+import 'package:eccms/features/organization/data/data_sources/remote/organization_data_remote_data_source_impl.dart';
+import 'package:eccms/features/organization/data/repository_impl/branches_repository_impl.dart';
+import 'package:eccms/features/organization/data/repository_impl/cities_repository_impl.dart';
+import 'package:eccms/features/organization/data/repository_impl/crime_type_repository_impl.dart';
+import 'package:eccms/features/organization/data/repository_impl/institution_repository_impl.dart';
+import 'package:eccms/features/organization/data/repository_impl/province_repository_impl.dart';
+import 'package:eccms/features/organization/domain/repository/branch_repository.dart';
+import 'package:eccms/features/organization/domain/repository/city_repository.dart';
+import 'package:eccms/features/organization/domain/repository/crime_type_repository.dart';
+import 'package:eccms/features/organization/domain/repository/institutions_repository.dart';
+import 'package:eccms/features/organization/domain/repository/provinces_repository.dart';
+import 'package:eccms/features/organization/domain/usecases/branch/get_all_branches.dart';
+import 'package:eccms/features/organization/domain/usecases/branch/get_all_branches_by_institution_id.dart';
+import 'package:eccms/features/organization/domain/usecases/branch/post_branch.dart';
+import 'package:eccms/features/organization/domain/usecases/cities/get_all_cities.dart';
+import 'package:eccms/features/organization/domain/usecases/cities/post_city.dart';
+import 'package:eccms/features/organization/domain/usecases/crime_type/get_all_crime_type.dart';
+import 'package:eccms/features/organization/domain/usecases/crime_type/get_all_crime_type_by_institution_id.dart';
+import 'package:eccms/features/organization/domain/usecases/crime_type/post_crime_type.dart';
+import 'package:eccms/features/organization/domain/usecases/institutions/get_all_institutions.dart';
+import 'package:eccms/features/organization/domain/usecases/institutions/get_institution_by_id.dart';
+import 'package:eccms/features/organization/domain/usecases/province/get_all_provinces.dart';
+import 'package:eccms/features/organization/domain/usecases/province/post_province.dart';
 
 import 'package:get_it/get_it.dart';
 
@@ -40,7 +66,6 @@ Future<void> init() async {
         getAllByUserIdUsecase: sl.call(),
         getAllByEmployeeIdUsecase: sl.call(),
         postInquiryUsecase: sl.call(),
-        // getAllBranchesUsecase: sl.ca'../../features/organization/domain/repository/ranches_repository.dart'pesUsecase: sl.call(),
         getAllCrimeTypesByInstitutionIdUsecase: sl.call(),
         getAllInstitutionsUsecase: sl.call(),
         // getAllProvincesUsecase: sl.call(),
@@ -49,6 +74,7 @@ Future<void> init() async {
         postCrimeTypeUsecase: sl.call(),
         // postProvinceUsecase: sl.call(),
         getCurrentUIdUsecase: sl.call(),
+        getAllCrimeTypesUsecase: sl.call(),
       ));
 
   //usecase
@@ -121,15 +147,15 @@ Future<void> init() async {
   sl.registerLazySingleton<AuthRepository>(
       () => AuthRepositoryImpl(remoteDataSource: sl.call()));
 
-  sl.registerLazySingleton<BranchesRepository>(
+  sl.registerLazySingleton<BranchRepository>(
       () => BranchesRepositoryImpl(remoteDataSource: sl.call()));
-  sl.registerLazySingleton<CitiesRepository>(
+  sl.registerLazySingleton<CityRepository>(
       () => CitiesRepositoryImpl(remoteDataSource: sl.call()));
   sl.registerLazySingleton<CrimeTypeRepository>(
       () => CrimeTypeRepositoryImpl(remoteDataSource: sl.call()));
-  sl.registerLazySingleton<InstitutionRepository>(
+  sl.registerLazySingleton<InstitutionsRepository>(
       () => InstitutionRepositoryImpl(remoteDataSource: sl.call()));
-  sl.registerLazySingleton<ProvinceRepository>(
+  sl.registerLazySingleton<ProvincesRepository>(
       () => ProvinceRepositoryImpl(remoteDataSource: sl.call()));
 
   sl.registerLazySingleton<InquiryRepository>(

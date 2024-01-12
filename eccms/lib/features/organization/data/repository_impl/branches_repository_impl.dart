@@ -1,8 +1,8 @@
 import 'package:eccms/features/organization/data/data_sources/remote/organization_data_remote_data_source.dart';
 import 'package:eccms/features/organization/domain/entities/branch_entity.dart';
-import 'package:eccms/features/organization/domain/repository/branches_repository.dart';
+import 'package:eccms/features/organization/domain/repository/branch_repository.dart';
 
-class BranchesRepositoryImpl extends BranchesRepository {
+class BranchesRepositoryImpl extends BranchRepository {
   final OrganizationDataRemoteDataSource remoteDataSource;
 
   BranchesRepositoryImpl({required this.remoteDataSource});
