@@ -28,8 +28,9 @@ class OrganizationDataRemoteDataSourceImpl
       if (response.statusCode == 200) {
         final List<dynamic> branchesData = jsonDecode(response.body);
 
-        List<BranchEntity> branches =
-            branchesData.map((data) => BranchModel.fromJson(data)).toList();
+        List<BranchEntity> branches = branchesData
+            .map<BranchEntity>((data) => BranchModel.fromJson(data))
+            .toList();
 
         return branches;
       } else {
@@ -52,8 +53,9 @@ class OrganizationDataRemoteDataSourceImpl
       if (response.statusCode == 200) {
         final List<dynamic> branchesData = jsonDecode(response.body);
 
-        List<BranchEntity> branches =
-            branchesData.map((data) => BranchModel.fromJson(data)).toList();
+        List<BranchEntity> branches = branchesData
+            .map<BranchEntity>((data) => BranchModel.fromJson(data))
+            .toList();
 
         return branches;
       } else {
@@ -106,8 +108,14 @@ class OrganizationDataRemoteDataSourceImpl
       if (response.statusCode == 200) {
         final List<dynamic> citiesData = jsonDecode(response.body);
 
-        List<CityEntity> cities =
-            citiesData.map((data) => CityModel.fromJson(data)).toList();
+        List<CityEntity> cities = citiesData.map<CityEntity>((data) {
+          CityModel model = CityModel.fromJson(data);
+          return CityEntity(
+            id: model.id,
+            name: model.name,
+            provinceId: model.provinceId,
+          );
+        }).toList();
 
         return cities;
       } else {
@@ -201,8 +209,9 @@ class OrganizationDataRemoteDataSourceImpl
       if (response.statusCode == 200) {
         final List<dynamic> provincesData = jsonDecode(response.body);
 
-        List<ProvinceEntity> provinces =
-            provincesData.map((data) => ProvinceModel.fromJson(data)).toList();
+        List<ProvinceEntity> provinces = provincesData
+            .map<ProvinceEntity>((data) => ProvinceModel.fromJson(data))
+            .toList();
         return provinces;
       } else {
         throw Exception("Failed to fetch provinces");
@@ -247,7 +256,7 @@ class OrganizationDataRemoteDataSourceImpl
         final List<dynamic> crimeTypesData = jsonDecode(response.body);
 
         List<CrimeTypeEntity> crimeTypes = crimeTypesData
-            .map((data) => CrimeTypeModel.fromJson(data))
+            .map<CrimeTypeEntity>((data) => CrimeTypeModel.fromJson(data))
             .toList();
 
         return crimeTypes;
@@ -272,7 +281,7 @@ class OrganizationDataRemoteDataSourceImpl
         final List<dynamic> crimeTypesData = jsonDecode(response.body);
 
         List<CrimeTypeEntity> crimeTypes = crimeTypesData
-            .map((data) => CrimeTypeModel.fromJson(data))
+            .map<CrimeTypeEntity>((data) => CrimeTypeModel.fromJson(data))
             .toList();
 
         return crimeTypes;

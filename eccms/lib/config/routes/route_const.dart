@@ -13,4 +13,6 @@ class RouteConst {
   static const String homeOfficerUserScreen = '/homeofficerUserScreen';
 
   static const String inquiryPostScreen = '/inquiryPostScreen';
+  static const String inquiryScreen = '/inquiryScreen';
+  static const String officerInquiryPostScreen = '/officerInquiryPostScreen';
 }

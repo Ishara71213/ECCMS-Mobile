@@ -68,13 +68,15 @@ Future<void> init() async {
         postInquiryUsecase: sl.call(),
         getAllCrimeTypesByInstitutionIdUsecase: sl.call(),
         getAllInstitutionsUsecase: sl.call(),
-        // getAllProvincesUsecase: sl.call(),
-        // postBranchUsecase: sl.call(),
-        // postCityUsecase: sl.call(),
+        getAllProvincesUsecase: sl.call(),
+        postBranchUsecase: sl.call(),
+        postCityUsecase: sl.call(),
         postCrimeTypeUsecase: sl.call(),
-        // postProvinceUsecase: sl.call(),
+        postProvinceUsecase: sl.call(),
         getCurrentUIdUsecase: sl.call(),
         getAllCrimeTypesUsecase: sl.call(),
+        getAllBranchesUsecase: sl.call(),
+        getAllCitiesUsecase: sl.call(),
       ));
 
   //usecase

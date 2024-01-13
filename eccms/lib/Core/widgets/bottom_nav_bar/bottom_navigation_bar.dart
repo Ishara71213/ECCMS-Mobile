@@ -1,7 +1,11 @@
 import 'package:eccms/Core/Utils/navigator_handler.dart';
+import 'package:eccms/Core/constants/user_types.dart';
 import 'package:eccms/config/routes/route_const.dart';
 import 'package:eccms/config/theme/app_themes.dart';
+import 'package:eccms/features/auth/presentation/bloc/auth/auth_cubit.dart';
+import 'package:eccms/features/auth/presentation/bloc/user/cubit/user_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:developer' as dev;
 
@@ -18,10 +22,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
   List<String> data = [
     'assets/icons/Home.svg',
     'assets/icons/chat.svg',
-    'assets/icons/Community.svg',
+    'assets/icons/Settings.svg',
   ];
 
-  List<String> iconNames = ['Home', 'Complains', 'Add Complain'];
+  List<String> iconNames = ['Home', 'Complains', 'Settings'];
 
   @override
   void initState() {
@@ -61,11 +65,16 @@ class _BottomNavBarState extends State<BottomNavBar> {
                           RouteConst.homeAdminUserScreen,
                           RouteConst.homeGuestUserScreen);
                     } else if (index == 1) {
-                      // navigationHandler(
-                      //     context, RouteConst.communityPostsScreen);
+                      if (BlocProvider.of<UserCubit>(context).userType ==
+                          UserTypes.guest) {
+                        NavigationHandler.navigate(
+                            context, RouteConst.inquiryPostScreen);
+                      } else {
+                        NavigationHandler.navigate(
+                            context, RouteConst.inquiryPostScreen);
+                      }
                     } else if (index == 2) {
-                      // navigationHandler(
-                      //     context, RouteConst.volunteerSupportScreen);
+                      BlocProvider.of<AuthCubit>(context).signOut();
                     }
                   });
                 },

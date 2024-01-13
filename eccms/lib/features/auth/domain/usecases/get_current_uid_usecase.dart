@@ -6,7 +6,7 @@ class GetCurrentUIdUsecase {
   GetCurrentUIdUsecase({required AuthRepository repository})
       : _repository = repository;
 
-  Future<String> call() async {
+  Future<int> call() async {
     return _repository.getCurrentUId();
   }
 }

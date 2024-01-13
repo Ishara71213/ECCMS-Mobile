@@ -5,6 +5,6 @@ abstract class AuthEccmsRemoteDataSource {
   Future<void> signIn(UserEntity entity);
   Future<void> signUp(UserEntity entity);
   Future<void> signOut();
-  Future<String> getCurrentUId();
+  Future<int> getCurrentUId();
   Future<UserEntity> getCurrentUserById();
 }

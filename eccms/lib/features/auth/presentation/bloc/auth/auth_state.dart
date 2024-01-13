@@ -13,7 +13,7 @@ class AuthInitial extends AuthState {
 }
 
 class Authenticated extends AuthState {
-  final String uid;
+  final int uid;
 
   const Authenticated({required this.uid});
 

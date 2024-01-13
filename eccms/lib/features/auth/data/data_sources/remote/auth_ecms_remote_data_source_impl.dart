@@ -12,11 +12,11 @@ class AuthEccmsRemoteDataSourceImpl extends AuthEccmsRemoteDataSource {
   AuthEccmsRemoteDataSourceImpl();
 
   @override
-  Future<String> getCurrentUId() async {
+  Future<int> getCurrentUId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     try {
-      String? memberId = prefs.getString("memberId");
-      return memberId ?? "";
+      int? memberId = prefs.getInt(StorageKeys.memberId);
+      return memberId ?? 0;
     } catch (e) {
       Utility.logError(prefs, "User", e.toString());
       rethrow;

@@ -1,13 +1,15 @@
 import 'package:eccms/Core/common/presentation/screens/splash_screen.dart';
 import 'package:eccms/Core/common/presentation/screens/splash_screen_data_loader.dart';
 import 'package:eccms/config/routes/route_const.dart';
-import 'package:eccms/features/app_features/presentation/screens/home_admin_user_screen.dart';
 import 'package:eccms/features/inquiry/presentation/screens/home_guest_user_screen.dart';
-import 'package:eccms/features/app_features/presentation/screens/home_officer_user_screen.dart';
 import 'package:eccms/features/auth/presentation/bloc/auth/auth_cubit.dart';
 import 'package:eccms/features/auth/presentation/screens/sign_in_screen.dart';
 import 'package:eccms/features/auth/presentation/screens/sign_up_screen.dart';
 import 'package:eccms/features/inquiry/presentation/screens/inquiry_post_screen.dart';
+import 'package:eccms/features/inquiry/presentation/screens/inquiry_screen.dart';
+import 'package:eccms/features/inquiry/presentation/screens/officer/officer_inquiry_post_screen.dart';
+import 'package:eccms/features/organization/presentation/screens/home_admin_user_screen.dart';
+import 'package:eccms/features/organization/presentation/screens/home_officer_user_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -45,6 +47,11 @@ class OnGenerateRoute {
       case RouteConst.inquiryPostScreen:
         return materialBuilder(
             widget: const InquiryPostScreen(), route: routeName);
+      case RouteConst.inquiryScreen:
+        return materialBuilder(widget: const InquiryScreen(), route: routeName);
+      case RouteConst.officerInquiryPostScreen:
+        return materialBuilder(
+            widget: const OfficerInquiryPostScreen(), route: routeName);
 
       //common screens
       // case RouteConst.settingsScreen:

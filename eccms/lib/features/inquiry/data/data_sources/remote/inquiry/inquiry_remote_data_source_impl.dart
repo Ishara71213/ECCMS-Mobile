@@ -20,7 +20,30 @@ class InquiryRemoteDataSourceImpl extends InquiryRemoteDataSource {
         final List<dynamic> inquiriesData = jsonDecode(response.body);
 
         List<InquiryEntity> inquiries =
-            inquiriesData.map((data) => InquiryModel.fromJson(data)).toList();
+            inquiriesData.map<InquiryEntity>((data) {
+          InquiryModel model = InquiryModel.fromJson(data);
+          return InquiryEntity(
+            id: model.id,
+            userId: model.userId,
+            employeeId: model.employeeId,
+            branchId: model.branchId,
+            institutionId: model.institutionId,
+            crimeTypeId: model.crimeTypeId,
+            crimeTypeName: model.crimeTypeName,
+            ticketId: model.ticketId,
+            status: model.status,
+            inquiryEntry: model.inquiryEntry,
+            userAttachment: model.userAttachment,
+            reviewingResponse: model.reviewingResponse,
+            assignResponse: model.assignResponse,
+            investigatingResponse: model.investigatingResponse,
+            investigatingAttachment: model.investigatingAttachment,
+            completeResponse: model.completeResponse,
+            userComment: model.userComment,
+            isSatisfied: model.isSatisfied,
+            rating: model.rating,
+          );
+        }).toList();
 
         return inquiries;
       } else {
@@ -44,7 +67,30 @@ class InquiryRemoteDataSourceImpl extends InquiryRemoteDataSource {
         final List<dynamic> inquiriesData = jsonDecode(response.body);
 
         List<InquiryEntity> inquiries =
-            inquiriesData.map((data) => InquiryModel.fromJson(data)).toList();
+            inquiriesData.map<InquiryEntity>((data) {
+          InquiryModel model = InquiryModel.fromJson(data);
+          return InquiryEntity(
+            id: model.id,
+            userId: model.userId,
+            employeeId: model.employeeId,
+            branchId: model.branchId,
+            institutionId: model.institutionId,
+            crimeTypeId: model.crimeTypeId,
+            crimeTypeName: model.crimeTypeName,
+            ticketId: model.ticketId,
+            status: model.status,
+            inquiryEntry: model.inquiryEntry,
+            userAttachment: model.userAttachment,
+            reviewingResponse: model.reviewingResponse,
+            assignResponse: model.assignResponse,
+            investigatingResponse: model.investigatingResponse,
+            investigatingAttachment: model.investigatingAttachment,
+            completeResponse: model.completeResponse,
+            userComment: model.userComment,
+            isSatisfied: model.isSatisfied,
+            rating: model.rating,
+          );
+        }).toList();
 
         return inquiries;
       } else {
@@ -67,7 +113,7 @@ class InquiryRemoteDataSourceImpl extends InquiryRemoteDataSource {
       final response = await HttpHelper.post(
           url, prefs, jsonEncode(model.toJsonPostInquiry()));
 
-      if (response.statusCode != 200) {
+      if (response.statusCode != 200 && response.statusCode != 201) {
         throw Exception("Failed to post inquiry");
       }
     } catch (e) {
@@ -87,8 +133,30 @@ class InquiryRemoteDataSourceImpl extends InquiryRemoteDataSource {
       if (response.statusCode == 200) {
         final List<dynamic> inquiriesData = jsonDecode(response.body);
 
-        List<InquiryEntity> inquiries =
-            inquiriesData.map((data) => InquiryModel.fromJson(data)).toList();
+        List<InquiryEntity> inquiries = inquiriesData.map((data) {
+          InquiryModel model = InquiryModel.fromJson(data);
+          return InquiryEntity(
+            id: model.id,
+            userId: model.userId,
+            employeeId: model.employeeId,
+            branchId: model.branchId,
+            institutionId: model.institutionId,
+            crimeTypeId: model.crimeTypeId,
+            crimeTypeName: model.crimeTypeName,
+            ticketId: model.ticketId,
+            status: model.status,
+            inquiryEntry: model.inquiryEntry,
+            userAttachment: model.userAttachment,
+            reviewingResponse: model.reviewingResponse,
+            assignResponse: model.assignResponse,
+            investigatingResponse: model.investigatingResponse,
+            investigatingAttachment: model.investigatingAttachment,
+            completeResponse: model.completeResponse,
+            userComment: model.userComment,
+            isSatisfied: model.isSatisfied,
+            rating: model.rating,
+          );
+        }).toList();
 
         return inquiries;
       } else {

@@ -5,6 +5,6 @@ abstract class AuthRepository {
   Future<void> signIn(UserEntity user);
   Future<void> signUp(UserEntity user);
   Future<void> signOut();
-  Future<String> getCurrentUId();
+  Future<int> getCurrentUId();
   Future<UserEntity> getCurrentUserById();
 }

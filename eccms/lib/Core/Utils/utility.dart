@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class Utility {
   static Map<String, String> httpHeaders(
       SharedPreferences prefs, Map<String, String> items) {
-    items['Content-Type'] = "application/json; charset=UTF-8";
+    items['Content-Type'] = "application/json";
     items['connection'] = "keep-alive";
     if (prefs.containsKey(StorageKeys.token)) {
       String? token = prefs.getString(StorageKeys.token);

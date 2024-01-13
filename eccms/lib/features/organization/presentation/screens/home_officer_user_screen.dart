@@ -1,24 +1,22 @@
-import 'package:eccms/Core/Utils/navigator_handler.dart';
 import 'package:eccms/Core/widgets/bottom_nav_bar/bottom_navigation_bar.dart';
-import 'package:eccms/config/routes/route_const.dart';
 import 'package:eccms/config/theme/app_themes.dart';
 import 'package:eccms/features/auth/presentation/bloc/user/cubit/user_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class HomeGuestUserScreen extends StatefulWidget {
-  const HomeGuestUserScreen({super.key});
+class HomeOfficerUserScreen extends StatefulWidget {
+  const HomeOfficerUserScreen({super.key});
 
   @override
-  State<HomeGuestUserScreen> createState() => _HomeAdminUserScreenState();
+  State<HomeOfficerUserScreen> createState() => _HomeOfficerUserScreenState();
 }
 
-class _HomeAdminUserScreenState extends State<HomeGuestUserScreen> {
+class _HomeOfficerUserScreenState extends State<HomeOfficerUserScreen> {
   @override
   Widget build(BuildContext context) {
-    // UserCubit userCubit = BlocProvider.of<UserCubit>(context);
-    Size size = MediaQuery.of(context).size;
+    //UserCubit userCubit = BlocProvider.of<UserCubit>(context);
+    Size size = MediaQuery.sizeOf(context);
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 90,
@@ -42,20 +40,6 @@ class _HomeAdminUserScreenState extends State<HomeGuestUserScreen> {
           onTap: () {},
         ),
         backgroundColor: kAppBgColor,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 18),
-            child: IconButton(
-                onPressed: () {
-                  NavigationHandler.navigate(context, RouteConst.inquiryScreen);
-                },
-                icon: Icon(
-                  Icons.add_circle_rounded,
-                  size: 40,
-                  color: kPrimaryColor,
-                )),
-          ),
-        ],
       ),
       body: SafeArea(
           child: SingleChildScrollView(
@@ -97,19 +81,7 @@ class _HomeAdminUserScreenState extends State<HomeGuestUserScreen> {
                         children: [
                           Flexible(
                               child: Text(
-                            "Hi Thank you for suporting to protect nature",
-                            style: kGreyBodytextStyle,
-                          )),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Row(
-                        children: [
-                          Flexible(
-                              child: Text(
-                            "You can forward your Inquiries to the Wild life or Forestry Departments",
+                            "Thank you for your dedication to wildlife and forestry conservation.",
                             style: kGreyBodytextStyle,
                           )),
                         ],

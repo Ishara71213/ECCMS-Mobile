@@ -12,7 +12,7 @@ class AuthRepositoryImpl extends AuthRepository {
       remoteDataSource.getCurrentUserById();
 
   @override
-  Future<String> getCurrentUId() async => remoteDataSource.getCurrentUId();
+  Future<int> getCurrentUId() async => remoteDataSource.getCurrentUId();
 
   @override
   Future<bool> isSignIn() async => remoteDataSource.isSignIn();

@@ -6,14 +6,15 @@ import 'package:eccms/features/organization/domain/entities/crime_type_entity.da
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class InquiryPostScreen extends StatefulWidget {
-  const InquiryPostScreen({super.key});
+class OfficerInquiryPostScreen extends StatefulWidget {
+  const OfficerInquiryPostScreen({super.key});
 
   @override
-  State<InquiryPostScreen> createState() => _InquiryPostScreenState();
+  State<OfficerInquiryPostScreen> createState() =>
+      _OfficerInquiryPostScreenState();
 }
 
-class _InquiryPostScreenState extends State<InquiryPostScreen> {
+class _OfficerInquiryPostScreenState extends State<OfficerInquiryPostScreen> {
   late InquiryCubit inquiryCubit;
 
   int cityId = 1;

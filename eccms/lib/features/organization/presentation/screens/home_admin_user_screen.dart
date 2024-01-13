@@ -6,18 +6,20 @@ import 'package:eccms/features/auth/presentation/bloc/user/cubit/user_cubit.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+//import 'package:lottie/lottie.dart' as li;
 
-class HomeGuestUserScreen extends StatefulWidget {
-  const HomeGuestUserScreen({super.key});
+class HomeAdminUserScreen extends StatefulWidget {
+  const HomeAdminUserScreen({super.key});
 
   @override
-  State<HomeGuestUserScreen> createState() => _HomeAdminUserScreenState();
+  State<HomeAdminUserScreen> createState() => _HomeAdminUserScreenState();
 }
 
-class _HomeAdminUserScreenState extends State<HomeGuestUserScreen> {
+class _HomeAdminUserScreenState extends State<HomeAdminUserScreen> {
   @override
   Widget build(BuildContext context) {
     // UserCubit userCubit = BlocProvider.of<UserCubit>(context);
+    //AdminCubit adminCubit = BlocProvider.of<AdminCubit>(context);
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
